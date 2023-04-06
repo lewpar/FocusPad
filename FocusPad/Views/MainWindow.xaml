@@ -7,23 +7,20 @@
         xmlns:vms="clr-namespace:FocusPad.ViewModels"
         xmlns:ni="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}, Mode=TwoWay}" Closing="FocusPadMainWindow_Closing">
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <ContextMenu x:Key="NotifyContextMenu">
+            <MenuItem Header="Settings" Command="{Binding CommandOpenSettings}"/>
+            <MenuItem Header="Exit" Command="{Binding CommandExitProgram}"/>
+        </ContextMenu>
+    </Window.Resources>
     <Grid>
-        <ni:TaskbarIcon x:Name="nIcon" Visibility="Visible" ToolTipText="Test Tooltip Text"
-                    IconSource="pack://application:,,,./Resources/Icons/tray.ico">
-            <ni:TaskbarIcon.DataContext>
-                <vms:MainWindowViewModel/>
-            </ni:TaskbarIcon.DataContext>
-            
-            <ni:TaskbarIcon.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Settings" Command="{Binding CommandOpenSettings}"/>
-                    <MenuItem Header="Exit" Command="{Binding CommandExitProgram}"/>
-                </ContextMenu>
-            </ni:TaskbarIcon.ContextMenu>
+        <ni:TaskbarIcon x:Name="nIcon" Visibility="Visible" ToolTipText="FocusPad"
+                    IconSource="pack://application:,,,./Resources/Icons/tray.ico" ContextMenu="{StaticResource NotifyContextMenu}">
         </ni:TaskbarIcon>
     </Grid>
 </Window>
