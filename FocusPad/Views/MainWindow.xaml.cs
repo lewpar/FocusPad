@@ -8,6 +8,7 @@ namespace FocusPad.Views
     public partial class MainWindow : Window
     {
         private KeyboardHook keyHook;
+        private string title;
 
         public MainWindow()
         {
@@ -18,10 +19,13 @@ namespace FocusPad.Views
             keyHook = new KeyboardHook();
             keyHook.RegisterHotKey(ModifierKeys.Alt | ModifierKeys.Shift, Keys.R);
             keyHook.KeyPressed += KeyHook_KeyPressed;
+
+            title = this.Title;
         }
 
         private void KeyHook_KeyPressed(object? sender, KeyPressedEventArgs e)
         {
+            this.Title = $"{title} - {ProcessPInvoke.GetForegroundProcessName()}";
             this.Visibility = Visibility.Visible;
         }
 
