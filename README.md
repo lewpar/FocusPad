@@ -1,0 +1,2 @@
+# FocusPad
+FocusPad is a note taking tool that lets your store notes for your currently selected/focused application. To use the tool you must press the shortcut for opening the application `Alt + Shift + R`.
