@@ -8,12 +8,10 @@ using System.Windows.Input;
 
 namespace FocusPad.ViewModels
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : ViewModel
     {
         public ICommand CommandOpenSettings { get; private set; }
         public ICommand CommandExitProgram { get; private set; }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         private bool _isVisible;
         public bool IsVisible { get => _isVisible; set => SetAndNotify(ref _isVisible, value); }
@@ -34,15 +32,6 @@ namespace FocusPad.ViewModels
         private void ExitProgram()
         {
             Application.Current.Shutdown();
-        }
-
-        public void SetAndNotify<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
-        {
-            if (!Equals(field, value))
-            {
-                field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
     }
 }
