@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using FocusPad.Utils;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
@@ -25,12 +27,23 @@ namespace FocusPad.ViewModels
             } 
         }
 
+        private List<string> _testNotes;
+        public List<string> TestNotes { get => _testNotes; set => SetAndNotify(ref _testNotes, value); }
+
+        private Dictionary<string, List<string>> _notes;
+
         public MainWindowViewModel()
         {
             CommandOpenSettings = new RelayCommand(OpenSettings);
             CommandExitProgram = new RelayCommand(ExitProgram);
 
             IsVisible = false;
+
+            _notes = new Dictionary<string, List<string>>()
+            {
+                { "Discord", new List<string>() { "A", "B" } },
+                { "devenv", new List<string>() { "C", "D" } }
+            };
         }
 
         private void OpenSettings()
@@ -45,7 +58,9 @@ namespace FocusPad.ViewModels
 
         private void LoadNotes()
         {
-            // TODO: Load notes
+            var currentProcess = ProcessPInvoke.GetForegroundProcessName();
+
+            TestNotes = _notes[currentProcess];
         }
     }
 }
