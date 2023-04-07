@@ -32,6 +32,10 @@ namespace FocusPad.Views
             {
                 this.Title = $"{title} - {focusName}";
                 this.Visibility = Visibility.Visible;
+
+                var workArea = SystemParameters.WorkArea;
+                this.Left = workArea.Right - this.Width;
+                this.Top = workArea.Bottom - this.Height;
             }
         }
 

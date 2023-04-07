@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}, Mode=TwoWay}" 
-        Topmost="True"
+        Topmost="True" WindowStyle="None" AllowsTransparency="True"
         Closing="FocusPadMainWindow_Closing" 
         Activated="FocusPadMainWindow_Activated" 
         Deactivated="FocusPadMainWindow_Deactivated">
