@@ -10,7 +10,9 @@
         Title="MainWindow" Height="450" Width="800"
         Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}, Mode=TwoWay}" 
         Topmost="True"
-        Closing="FocusPadMainWindow_Closing" Activated="FocusPadMainWindow_Activated" Deactivated="FocusPadMainWindow_Deactivated">
+        Closing="FocusPadMainWindow_Closing" 
+        Activated="FocusPadMainWindow_Activated" 
+        Deactivated="FocusPadMainWindow_Deactivated">
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
@@ -54,7 +56,7 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <TextBlock Text="{Binding}"/>
+                                    <TextBlock Text="{Binding Content}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

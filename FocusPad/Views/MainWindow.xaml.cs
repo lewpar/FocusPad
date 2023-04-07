@@ -45,7 +45,7 @@ namespace FocusPad.Views
         private void FocusPadMainWindow_Deactivated(object sender, System.EventArgs e)
         {
             // Hide the window when changing focus from current process.
-            this.Visibility = Visibility.Hidden;
+            //this.Visibility = Visibility.Hidden;
         }
 
         private void FocusPadMainWindow_Activated(object sender, System.EventArgs e)

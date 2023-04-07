@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using FocusPad.Models;
 using FocusPad.Utils;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,10 +28,10 @@ namespace FocusPad.ViewModels
             } 
         }
 
-        private List<string> _testNotes;
-        public List<string> TestNotes { get => _testNotes; set => SetAndNotify(ref _testNotes, value); }
+        private List<FocusNote> _testNotes;
+        public List<FocusNote> TestNotes { get => _testNotes; set => SetAndNotify(ref _testNotes, value); }
 
-        private Dictionary<string, List<string>> _notes;
+        private Dictionary<string, List<FocusNote>> _notes;
 
         public MainWindowViewModel()
         {
@@ -39,10 +40,9 @@ namespace FocusPad.ViewModels
 
             IsVisible = false;
 
-            _notes = new Dictionary<string, List<string>>()
+            _notes = new Dictionary<string, List<FocusNote>>()
             {
-                { "Discord", new List<string>() { "A", "B" } },
-                { "devenv", new List<string>() { "C", "D" } }
+                { "Notepad", new List<FocusNote>() { new FocusNote() { Content = "Test" } } }
             };
         }
 
