@@ -57,5 +57,10 @@ namespace FocusPad.Views
             // Set the current process to the foreground, fixes loss of focus.
             ProcessPInvoke.SetForegroundProcess(Process.GetCurrentProcess());
         }
+
+        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

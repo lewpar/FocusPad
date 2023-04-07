@@ -7,12 +7,13 @@
         xmlns:vms="clr-namespace:FocusPad.ViewModels"
         xmlns:ni="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow"
         Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}, Mode=TwoWay}" 
         Topmost="True" WindowStyle="None" AllowsTransparency="True"
         Closing="FocusPadMainWindow_Closing" 
         Activated="FocusPadMainWindow_Activated" 
-        Deactivated="FocusPadMainWindow_Deactivated">
+        Deactivated="FocusPadMainWindow_Deactivated"
+        Width="400" Height="400">
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
@@ -23,10 +24,19 @@
         </ContextMenu>
     </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
         <ni:TaskbarIcon x:Name="nIcon" Visibility="Visible" ToolTipText="FocusPad"
                     IconSource="pack://application:,,,./Resources/Icons/tray.ico" ContextMenu="{StaticResource NotifyContextMenu}"/>
 
-        <TabControl x:Name="FocusTabControl">
+        <Grid Grid.Row="0" MouseDown="Grid_MouseDown" Background="Red">
+            
+        </Grid>
+        
+        <TabControl x:Name="FocusTabControl" Grid.Row="1">
             <TabItem Header="Notes">
                 <Grid>
                     <Grid.RowDefinitions>
