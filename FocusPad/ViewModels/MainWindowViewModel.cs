@@ -1,8 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -14,7 +11,19 @@ namespace FocusPad.ViewModels
         public ICommand CommandExitProgram { get; private set; }
 
         private bool _isVisible;
-        public bool IsVisible { get => _isVisible; set => SetAndNotify(ref _isVisible, value); }
+        public bool IsVisible 
+        { 
+            get => _isVisible; 
+            set
+            {
+                SetAndNotify(ref _isVisible, value);
+
+                if (value)
+                {
+                    LoadNotes();
+                }
+            } 
+        }
 
         public MainWindowViewModel()
         {
@@ -32,6 +41,11 @@ namespace FocusPad.ViewModels
         private void ExitProgram()
         {
             Application.Current.Shutdown();
+        }
+
+        private void LoadNotes()
+        {
+            // TODO: Load notes
         }
     }
 }
