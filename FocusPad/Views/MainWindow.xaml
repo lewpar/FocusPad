@@ -8,7 +8,9 @@
         xmlns:ni="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}, Mode=TwoWay}" Closing="FocusPadMainWindow_Closing">
+        Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}, Mode=TwoWay}" 
+        Topmost="True"
+        Closing="FocusPadMainWindow_Closing" Activated="FocusPadMainWindow_Activated" Deactivated="FocusPadMainWindow_Deactivated">
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
@@ -20,7 +22,15 @@
     </Window.Resources>
     <Grid>
         <ni:TaskbarIcon x:Name="nIcon" Visibility="Visible" ToolTipText="FocusPad"
-                    IconSource="pack://application:,,,./Resources/Icons/tray.ico" ContextMenu="{StaticResource NotifyContextMenu}">
-        </ni:TaskbarIcon>
+                    IconSource="pack://application:,,,./Resources/Icons/tray.ico" ContextMenu="{StaticResource NotifyContextMenu}"/>
+
+        <TabControl x:Name="FocusTabControl">
+            <TabItem Header="Notes">
+                
+            </TabItem>
+            <TabItem Header="Settings">
+                
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
