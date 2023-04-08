@@ -60,6 +60,11 @@ namespace FocusPad.ViewModels
         {
             var currentProcess = ProcessPInvoke.GetForegroundProcessName();
 
+            if(!_notes.ContainsKey(currentProcess))
+            {
+                _notes.Add(currentProcess, new List<FocusNote>());
+            }
+
             TestNotes = _notes[currentProcess];
         }
     }
