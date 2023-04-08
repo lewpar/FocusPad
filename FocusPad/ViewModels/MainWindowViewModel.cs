@@ -5,6 +5,7 @@ using FocusPad.Models;
 using FocusPad.Utils;
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
@@ -15,6 +16,7 @@ namespace FocusPad.ViewModels
     {
         public ICommand CommandOpenSettings { get; private set; }
         public ICommand CommandExitProgram { get; private set; }
+        public ICommand CommandDeleteItem { get; private set; }
 
         private bool _isVisible;
         public bool IsVisible 
@@ -31,21 +33,24 @@ namespace FocusPad.ViewModels
             } 
         }
 
-        private List<FocusNote> _testNotes;
-        public List<FocusNote> TestNotes { get => _testNotes; set => this.SetProperty(ref _testNotes, value); }
+        private string _currentProcess;
 
-        private Dictionary<string, List<FocusNote>> _notes;
+        private ObservableCollection<FocusNote> _testNotes;
+        public ObservableCollection<FocusNote> TestNotes { get => _testNotes; set => this.SetProperty(ref _testNotes, value); }
+
+        private Dictionary<string, ObservableCollection<FocusNote>> _notes;
 
         public MainWindowViewModel()
         {
             CommandOpenSettings = new RelayCommand(OpenSettings);
             CommandExitProgram = new RelayCommand(ExitProgram);
+            CommandDeleteItem = new RelayCommand<FocusNote>(DeleteItem);
 
             IsVisible = false;
 
-            _notes = new Dictionary<string, List<FocusNote>>()
+            _notes = new Dictionary<string, ObservableCollection<FocusNote>>()
             {
-                { "Notepad", new List<FocusNote>() { new FocusNote() { Title = "Title", Content = "Test Content" } } }
+                { "Notepad", new ObservableCollection<FocusNote>() { new FocusNote() { Title = "Title", Content = "Test Content" } } }
             };
         }
 
@@ -61,14 +66,23 @@ namespace FocusPad.ViewModels
 
         private void LoadNotes()
         {
-            var currentProcess = ProcessPInvoke.GetForegroundProcessName();
+            _currentProcess = ProcessPInvoke.GetForegroundProcessName();
 
-            if(!_notes.ContainsKey(currentProcess))
+            if(!_notes.ContainsKey(_currentProcess))
             {
-                _notes.Add(currentProcess, new List<FocusNote>());
+                _notes.Add(_currentProcess, new ObservableCollection<FocusNote>());
             }
 
-            TestNotes = _notes[currentProcess];
+            TestNotes = _notes[_currentProcess];
+        }
+
+        private void DeleteItem(FocusNote note)
+        {
+            if(TestNotes.Contains(note))
+            {
+                TestNotes.Remove(note);
+                _notes[_currentProcess].Remove(note);
+            }
         }
     }
 }
