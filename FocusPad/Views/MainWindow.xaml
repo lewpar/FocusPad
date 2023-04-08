@@ -17,50 +17,62 @@
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
-    <Border CornerRadius="5" BorderThickness="1" BorderBrush="#606060" Background="#404040">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    
+    <Window.Resources>
+        <ContextMenu x:Key="NotifyContextMenu">
+            <MenuItem Header="Settings" Command="{Binding CommandOpenSettings}"/>
+            <MenuItem Header="Exit" Command="{Binding CommandExitProgram}"/>
+        </ContextMenu>
+    </Window.Resources>
+    <Grid>
+        <ni:TaskbarIcon x:Name="nIcon" Visibility="Visible" ToolTipText="FocusPad"
+                    IconSource="pack://application:,,,./Resources/Icons/tray.ico" ContextMenu="{StaticResource NotifyContextMenu}"/>
 
-            <Border Grid.Row="0" Background="#353535" BorderThickness="1" CornerRadius="5 5 0 0" MouseDown="Grid_MouseDown_1">
-                <Grid>
+        <Border CornerRadius="5" BorderThickness="1" BorderBrush="#606060" Background="#404040">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Background="#353535" BorderThickness="1" CornerRadius="5 5 0 0" MouseDown="Grid_MouseDown_1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="Notepad" Foreground="LightGray"
+                               VerticalAlignment="Center" Margin="10 0 0 0"
+                               IsHitTestVisible="False"/>
+                        <Button Grid.Column="1" Content="x" Width="40"/>
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Row="1" Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" Text="Notepad" Foreground="LightGray"
-                               VerticalAlignment="Center" Margin="10 0 0 0"
-                               IsHitTestVisible="False"/>
-                    <Button Grid.Column="1" Content="x" Width="40"/>
+                    <TextBox Grid.Column="0"/>
+                    <Button Grid.Column="1" Width="30" Height="30" Content="+"/>
                 </Grid>
-            </Border>
 
-            <Grid Grid.Row="1" Margin="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBox Grid.Column="0"/>
-                <Button Grid.Column="1" Width="30" Height="30" Content="+"/>
+                <Grid Grid.Row="2" Margin="5">
+                    <ListBox ItemsSource="{Binding TestNotes}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Content}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
             </Grid>
-
-            <Grid Grid.Row="2" Margin="5">
-                <ListBox ItemsSource="{Binding TestNotes}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Content}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
-        </Grid>
-    </Border>
+        </Border>
+    </Grid>
 </Window>
