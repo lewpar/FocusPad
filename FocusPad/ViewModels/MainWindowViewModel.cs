@@ -1,6 +1,9 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+
 using FocusPad.Models;
 using FocusPad.Utils;
+
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
@@ -8,7 +11,7 @@ using System.Windows.Input;
 
 namespace FocusPad.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainWindowViewModel : ObservableObject
     {
         public ICommand CommandOpenSettings { get; private set; }
         public ICommand CommandExitProgram { get; private set; }
@@ -19,7 +22,7 @@ namespace FocusPad.ViewModels
             get => _isVisible; 
             set
             {
-                SetAndNotify(ref _isVisible, value);
+                this.SetProperty(ref _isVisible, value);
 
                 if (value)
                 {
@@ -29,7 +32,7 @@ namespace FocusPad.ViewModels
         }
 
         private List<FocusNote> _testNotes;
-        public List<FocusNote> TestNotes { get => _testNotes; set => SetAndNotify(ref _testNotes, value); }
+        public List<FocusNote> TestNotes { get => _testNotes; set => this.SetProperty(ref _testNotes, value); }
 
         private Dictionary<string, List<FocusNote>> _notes;
 
