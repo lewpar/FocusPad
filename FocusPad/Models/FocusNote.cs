@@ -8,6 +8,7 @@ namespace FocusPad.Models
 {
     public class FocusNote
     {
+        public string Title { get; set; }
         public string Content { get; set; }
     }
 }

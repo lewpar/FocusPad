@@ -49,27 +49,15 @@
             </Grid>
 
             <Grid Grid.Row="2" Margin="5">
-                <ListBox>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
-                    <ListBoxItem Content="Test"/>
+                <ListBox ItemsSource="{Binding TestNotes}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Content}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
             </Grid>
         </Grid>

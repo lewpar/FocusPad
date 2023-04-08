@@ -42,7 +42,7 @@ namespace FocusPad.ViewModels
 
             _notes = new Dictionary<string, List<FocusNote>>()
             {
-                { "Notepad", new List<FocusNote>() { new FocusNote() { Content = "Test" } } }
+                { "Notepad", new List<FocusNote>() { new FocusNote() { Title = "Title", Content = "Test Content" } } }
             };
         }
 
