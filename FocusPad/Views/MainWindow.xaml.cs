@@ -49,7 +49,7 @@ namespace FocusPad.Views
         private void FocusPadMainWindow_Deactivated(object sender, System.EventArgs e)
         {
             // Hide the window when changing focus from current process.
-            //this.Visibility = Visibility.Hidden;
+            this.Visibility = Visibility.Hidden;
         }
 
         private void FocusPadMainWindow_Activated(object sender, System.EventArgs e)
@@ -58,7 +58,7 @@ namespace FocusPad.Views
             ProcessPInvoke.SetForegroundProcess(Process.GetCurrentProcess());
         }
 
-        private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Grid_MouseDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             this.DragMove();
         }
