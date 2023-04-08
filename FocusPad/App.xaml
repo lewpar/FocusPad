@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,./Resources/Styles/FocusStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,./Resources/Styles/StyleFocusListBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <BooleanToVisibilityConverter x:Key="BoolToVis" />
