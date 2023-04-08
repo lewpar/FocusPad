@@ -6,10 +6,40 @@
     </Style>
 
     <Style x:Key="StyleFocusListBoxItem" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="Background" Value="#353535"/>
+        <Style.Resources>
+            <SolidColorBrush x:Key="ItemIdleColor" Color="#353535"/>
+            <SolidColorBrush x:Key="ItemHighlightColor" Color="#454545"/>
+            <SolidColorBrush x:Key="ItemSelectedColor" Color="#303030"/>
+        </Style.Resources>
         <Setter Property="Foreground" Value="LightGray"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Margin" Value="0 2 0 2"/>
-        <Setter Property="Padding" Value="5"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border x:Name="FocusListBoxItemBorder" 
+                        BorderThickness="1"
+                            Padding="5"
+                            Margin="0 2 0 2"
+                            BorderBrush="{StaticResource ItemIdleColor}"
+                            Background="{StaticResource ItemIdleColor}"
+                            SnapsToDevicePixels="True">
+                        
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}"
+                                          ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                          HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="FocusListBoxItemBorder" Property="Background" Value="{StaticResource ItemHighlightColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="FocusListBoxItemBorder" Property="Background" Value="{StaticResource ItemSelectedColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>
