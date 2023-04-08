@@ -56,7 +56,8 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox Grid.Column="0"/>
+                    <TextBox Style="{StaticResource StyleFocusTextBox}" Grid.Column="0"
+                             VerticalContentAlignment="Center"/>
                     <Button Grid.Column="1" Width="30" Height="30" Content="+"/>
                 </Grid>
 
