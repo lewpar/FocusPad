@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Visibility="{Binding IsVisible, Converter={StaticResource BoolToVis}, Mode=TwoWay}" 
-        Topmost="True" WindowStyle="None" AllowsTransparency="True"
+        Topmost="True" WindowStyle="None" AllowsTransparency="True" Background="Transparent"
         Closing="FocusPadMainWindow_Closing" 
         Activated="FocusPadMainWindow_Activated" 
         Deactivated="FocusPadMainWindow_Deactivated"
@@ -17,66 +17,61 @@
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        <ContextMenu x:Key="NotifyContextMenu">
-            <MenuItem Header="Settings" Command="{Binding CommandOpenSettings}"/>
-            <MenuItem Header="Exit" Command="{Binding CommandExitProgram}"/>
-        </ContextMenu>
-    </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        
-        <ni:TaskbarIcon x:Name="nIcon" Visibility="Visible" ToolTipText="FocusPad"
-                    IconSource="pack://application:,,,./Resources/Icons/tray.ico" ContextMenu="{StaticResource NotifyContextMenu}"/>
-
-        <Grid Grid.Row="0" MouseDown="Grid_MouseDown" Background="Red">
+    <Border CornerRadius="5" BorderThickness="1" BorderBrush="#606060" Background="#404040">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             
-        </Grid>
-        
-        <TabControl x:Name="FocusTabControl" Grid.Row="1">
-            <TabItem Header="Notes">
+            <Border Grid.Row="0" Background="#353535" BorderThickness="1" CornerRadius="5 5 0 0">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <TextBlock Grid.Row="0" Text="Test"/>
-                    <Grid Grid.Row="1" Margin="0 5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <RichTextBox Grid.Column="0" Margin="0 0 5 0"/>
-                        <Button Grid.Column="1" Content="Add" Padding="5 2 5 2" Margin="0 0 5 0"/>
-                        <Button Grid.Column="2" Content="Remove" Padding="5 2 5 2"/>
-                    </Grid>
-                    <ListBox Grid.Row="2" ItemsSource="{Binding TestNotes}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <TextBlock Text="{Binding Content}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <RichTextBox Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Margin="5 5 0 0"></RichTextBox>
+
+                    <TextBlock Grid.Column="0" Text="Notepad" Foreground="LightGray"
+                               VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    <Button Grid.Column="1" Content="x" Width="40"/>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Settings">
-                
-            </TabItem>
-        </TabControl>
-    </Grid>
+            </Border>
+
+            <Grid Grid.Row="1" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0"/>
+                <Button Grid.Column="1" Width="30" Height="30" Content="+"/>
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="5">
+                <ListBox>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                    <ListBoxItem Content="Test"/>
+                </ListBox>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>
