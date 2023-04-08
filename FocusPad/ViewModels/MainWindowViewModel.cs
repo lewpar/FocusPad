@@ -50,7 +50,13 @@ namespace FocusPad.ViewModels
 
             _notes = new Dictionary<string, ObservableCollection<FocusNote>>()
             {
-                { "Notepad", new ObservableCollection<FocusNote>() { new FocusNote() { Title = "Title", Content = "Test Content" } } }
+                { "Notepad", new ObservableCollection<FocusNote>() 
+                    { 
+                        new FocusNote() { Title = "Title", Content = "Test Content" }, 
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" }
+                    } 
+                }
             };
         }
 

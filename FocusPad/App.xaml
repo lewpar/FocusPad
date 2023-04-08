@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:FocusPad.Views"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,./Resources/Styles/FocusStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="BoolToVis" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
