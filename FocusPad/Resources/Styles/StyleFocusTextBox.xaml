@@ -7,7 +7,7 @@
             </Style>
         </Style.Resources>
         <Setter Property="Background" Value="#4d4d4d"/>
-        <Setter Property="Foreground" Value="#a2a2a2"/>
+        <Setter Property="Foreground" Value="LightGray"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="5"/>
     </Style>
