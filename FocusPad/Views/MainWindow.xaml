@@ -50,7 +50,7 @@
                     </Grid>
                 </Border>
 
-                <Grid Grid.Row="1" Margin="5">
+                <Grid Grid.Row="1" Margin="5 5 5 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="auto"/>
