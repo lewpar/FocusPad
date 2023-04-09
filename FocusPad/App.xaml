@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,./Resources/Styles/StyleFocusListBox.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,./Resources/Styles/StyleFocusTextBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,./Resources/Styles/StyleFocusButtonDelete.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <BooleanToVisibilityConverter x:Key="BoolToVis" />

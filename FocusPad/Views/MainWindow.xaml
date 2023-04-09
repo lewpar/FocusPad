@@ -78,7 +78,7 @@
                                         <TextBlock Text="{Binding Content}"/>
                                     </StackPanel>
 
-                                    <Button Grid.Column="1" Content="x" 
+                                    <Button Grid.Column="1" Content="x" Style="{StaticResource StyleFocusButtonDelete}"
                                             Width="20" Height="20" VerticalAlignment="Top"
                                             Command="{Binding Path=DataContext.CommandDeleteItem, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
                                             CommandParameter="{Binding}"/>
