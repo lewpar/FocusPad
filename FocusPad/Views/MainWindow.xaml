@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FocusPad.Views"
         xmlns:vms="clr-namespace:FocusPad.ViewModels"
+        xmlns:ctls="clr-namespace:FocusPad.Controls"
         xmlns:ni="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
         Title="MainWindow"
@@ -95,9 +96,9 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    
+
                                     <StackPanel Grid.Column="0" Orientation="Vertical">
-                                        <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
+                                        <ctls:EditableTextBlock Text="{Binding Title, Mode=TwoWay}" TextBoxStyle="{StaticResource StyleFocusTextBox}" FontWeight="Bold"/>
                                         <TextBlock Text="{Binding Content}"/>
                                     </StackPanel>
 
