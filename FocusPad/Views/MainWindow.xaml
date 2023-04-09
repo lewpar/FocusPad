@@ -58,7 +58,7 @@
 
                     <Grid Grid.Column="0">
                         <TextBox x:Name="FocusSearchTextBox" Style="{StaticResource StyleFocusTextBox}" Grid.Column="0"
-                             VerticalContentAlignment="Center" Text="{Binding SearchText, Mode=TwoWay}"/>
+                             VerticalContentAlignment="Center" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock Text="Search / Create" IsHitTestVisible="False" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="LightGray">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
@@ -79,7 +79,9 @@
                         </TextBlock>
                     </Grid>
 
-                    <Button Grid.Column="1" Width="30" Height="30" Content="+" Style="{StaticResource StyleFocusButtonAdd}" Command="{Binding CommandAddItem}"/>
+                    <Button Grid.Column="1" Width="30" Height="30" Content="+" 
+                            Style="{StaticResource StyleFocusButtonAdd}" 
+                            Command="{Binding CommandAddItem}" IsDefault="True"/>
                 </Grid>
                 
                 <Grid Grid.Row="2" Margin="5">
