@@ -41,6 +41,7 @@ namespace FocusPad.ViewModels
         }
 
         private string _currentProcess;
+        public string CurrentProcess { get => _currentProcess; set => this.SetProperty(ref _currentProcess, value); }
 
         private ObservableCollection<FocusNote> _currentNotes;
         public ObservableCollection<FocusNote> CurrentNotes { get => _currentNotes; set => this.SetProperty(ref _currentNotes, value); }
@@ -95,15 +96,15 @@ namespace FocusPad.ViewModels
 
         private void LoadNotes()
         {
-            _currentProcess = ProcessPInvoke.GetForegroundProcessName();
+            CurrentProcess = ProcessPInvoke.GetForegroundProcessName();
 
             // Create new note-list if not exist for current process.
-            if(!_notes.ContainsKey(_currentProcess))
+            if(!_notes.ContainsKey(CurrentProcess))
             {
-                _notes.Add(_currentProcess, new ObservableCollection<FocusNote>());
+                _notes.Add(CurrentProcess, new ObservableCollection<FocusNote>());
             }
 
-            CurrentNotes = _notes[_currentProcess];
+            CurrentNotes = _notes[CurrentProcess];
         }
 
         private void AddItem()

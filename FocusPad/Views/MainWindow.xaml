@@ -44,7 +44,7 @@
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="Notepad" Foreground="LightGray"
+                        <TextBlock Grid.Column="0" Text="{Binding CurrentProcess, StringFormat=FocusPad - {0}}" Foreground="LightGray"
                                VerticalAlignment="Center" Margin="10 0 0 0"
                                IsHitTestVisible="False"/>
                         <Button Grid.Column="1" Content="x" Width="40" Style="{StaticResource StyleFocusButtonExit}"/>
