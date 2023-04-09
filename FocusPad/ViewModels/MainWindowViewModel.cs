@@ -107,6 +107,11 @@ namespace FocusPad.ViewModels
 
         private void AddItem()
         {
+            if(string.IsNullOrEmpty(SearchText))
+            {
+                return;
+            }
+
             var note = new FocusNote()
             {
                 Title = "Untitled",
