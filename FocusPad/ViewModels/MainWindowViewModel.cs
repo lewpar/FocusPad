@@ -54,6 +54,20 @@ namespace FocusPad.ViewModels
                     { 
                         new FocusNote() { Title = "Title", Content = "Test Content" }, 
                         new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
+                        new FocusNote() { Title = "Title", Content = "Test Content" },
                         new FocusNote() { Title = "Title", Content = "Test Content" }
                     } 
                 }
