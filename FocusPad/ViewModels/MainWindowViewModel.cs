@@ -119,7 +119,7 @@ namespace FocusPad.ViewModels
                 Content = SearchText
             };
 
-            CurrentNotes.Add(note);
+            CurrentNotes.Insert(0, note);
 
             SearchText = string.Empty;
         }
