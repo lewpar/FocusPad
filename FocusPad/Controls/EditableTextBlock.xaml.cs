@@ -47,7 +47,7 @@ namespace FocusPad.Controls
 
         private void eTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            eTextBlock.Visibility = Visibility.Hidden;
+            eTextBlock.Visibility = Visibility.Collapsed;
             eTextBox.Visibility = Visibility.Visible;
 
             eTextBox.Focus();
@@ -60,7 +60,7 @@ namespace FocusPad.Controls
         private void eTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             eTextBlock.Visibility = Visibility.Visible;
-            eTextBox.Visibility = Visibility.Hidden;
+            eTextBox.Visibility = Visibility.Collapsed;
         }
 
         private void eTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -68,7 +68,7 @@ namespace FocusPad.Controls
             if(e.Key == Key.Enter)
             {
                 eTextBlock.Visibility = Visibility.Visible;
-                eTextBox.Visibility = Visibility.Hidden;
+                eTextBox.Visibility = Visibility.Collapsed;
             }
         }
     }

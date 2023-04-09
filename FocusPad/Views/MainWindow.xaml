@@ -104,7 +104,7 @@
                                         </Grid.RowDefinitions>
                                         
                                         <ctls:EditableTextBlock Grid.Row="0" Text="{Binding Title, Mode=TwoWay}" TextBoxStyle="{StaticResource StyleFocusTextBox}" FontWeight="Bold"/>
-                                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding Content}"/>
+                                        <ctls:EditableTextBlock Grid.Row="1" Text="{Binding Content, Mode=TwoWay}" TextBoxStyle="{StaticResource StyleFocusTextBox}"/>
                                     </Grid>
 
                                     <Button Grid.Column="1" Content="x" Style="{StaticResource StyleFocusButtonDelete}"

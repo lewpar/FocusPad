@@ -17,7 +17,7 @@
         
         <TextBox x:Name="eTextBox" 
                  Text="{Binding Text, ElementName=FocusPadEditableTextBlock}" 
-                 Visibility="Hidden" Style="{Binding TextBoxStyle, ElementName=FocusPadEditableTextBlock}"
-                 LostFocus="eTextBox_LostFocus" KeyUp="eTextBox_KeyUp"/>
+                 Visibility="Collapsed" Style="{Binding TextBoxStyle, ElementName=FocusPadEditableTextBlock}"
+                 LostFocus="eTextBox_LostFocus" KeyUp="eTextBox_KeyUp" TextWrapping="Wrap"/>
     </Grid>
 </UserControl>
