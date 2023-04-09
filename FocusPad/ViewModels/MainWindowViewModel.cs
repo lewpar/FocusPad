@@ -107,7 +107,15 @@ namespace FocusPad.ViewModels
 
         private void AddItem()
         {
+            var note = new FocusNote()
+            {
+                Title = "Untitled",
+                Content = SearchText
+            };
 
+            _notes[_currentProcess].Add(note);
+
+            SearchText = string.Empty;
         }
 
         private void DeleteItem(FocusNote note)
