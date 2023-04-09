@@ -56,8 +56,26 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBox Style="{StaticResource StyleFocusTextBox}" Grid.Column="0"
+                    <Grid Grid.Column="0">
+                        <TextBox x:Name="FocusSearchTextBox" Style="{StaticResource StyleFocusTextBox}" Grid.Column="0"
                              VerticalContentAlignment="Center"/>
+                        <TextBlock Text="Search / Create" IsHitTestVisible="False" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="LightGray">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=FocusSearchTextBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <Trigger Property="IsFocused" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
                     <Button Grid.Column="1" Width="30" Height="30" Content="+" Style="{StaticResource StyleFocusButtonAdd}"/>
                 </Grid>
 
