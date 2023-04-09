@@ -81,7 +81,7 @@
 
                     <Button Grid.Column="1" Width="30" Height="30" Content="+" Style="{StaticResource StyleFocusButtonAdd}"/>
                 </Grid>
-
+                
                 <Grid Grid.Row="2" Margin="5">
                     <ListBox Style="{StaticResource StyleFocusListBox}" ItemContainerStyle="{StaticResource StyleFocusListBoxItem}"
                              ItemsSource="{Binding TestNotes, UpdateSourceTrigger=PropertyChanged}" 
