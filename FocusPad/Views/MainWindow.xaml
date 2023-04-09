@@ -88,7 +88,7 @@
                 <Grid Grid.Row="2" Margin="5">
                     <ListBox Style="{StaticResource StyleFocusListBox}" ItemContainerStyle="{StaticResource StyleFocusListBoxItem}"
                              ItemsSource="{Binding CurrentNotes, UpdateSourceTrigger=PropertyChanged}" 
-                             HorizontalContentAlignment="Stretch">
+                             HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -97,10 +97,15 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <StackPanel Grid.Column="0" Orientation="Vertical">
-                                        <ctls:EditableTextBlock Text="{Binding Title, Mode=TwoWay}" TextBoxStyle="{StaticResource StyleFocusTextBox}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Content}"/>
-                                    </StackPanel>
+                                    <Grid Grid.Column="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        
+                                        <ctls:EditableTextBlock Grid.Row="0" Text="{Binding Title, Mode=TwoWay}" TextBoxStyle="{StaticResource StyleFocusTextBox}" FontWeight="Bold"/>
+                                        <TextBlock Grid.Row="1" TextWrapping="Wrap" Text="{Binding Content}"/>
+                                    </Grid>
 
                                     <Button Grid.Column="1" Content="x" Style="{StaticResource StyleFocusButtonDelete}"
                                             Width="20" Height="20" VerticalAlignment="Top"
