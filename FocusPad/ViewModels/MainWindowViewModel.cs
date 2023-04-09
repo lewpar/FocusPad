@@ -16,6 +16,7 @@ namespace FocusPad.ViewModels
     {
         public ICommand CommandOpenSettings { get; private set; }
         public ICommand CommandExitProgram { get; private set; }
+        public ICommand CommandAddItem { get; private set; }
         public ICommand CommandDeleteItem { get; private set; }
 
         private bool _isVisible;
@@ -44,6 +45,7 @@ namespace FocusPad.ViewModels
         {
             CommandOpenSettings = new RelayCommand(OpenSettings);
             CommandExitProgram = new RelayCommand(ExitProgram);
+            CommandAddItem = new RelayCommand(AddItem);
             CommandDeleteItem = new RelayCommand<FocusNote>(DeleteItem);
 
             IsVisible = false;
@@ -94,6 +96,11 @@ namespace FocusPad.ViewModels
             }
 
             TestNotes = _notes[_currentProcess];
+        }
+
+        private void AddItem()
+        {
+
         }
 
         private void DeleteItem(FocusNote note)
