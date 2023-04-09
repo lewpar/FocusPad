@@ -6,7 +6,10 @@ using FocusPad.Utils;
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace FocusPad.ViewModels
@@ -37,7 +40,11 @@ namespace FocusPad.ViewModels
         public string SearchText
         {
             get => _searchText;
-            set => SetProperty(ref _searchText, value);
+            set
+            {
+                SetProperty(ref _searchText, value);
+                CurrentNotesSorted.Refresh();
+            }
         }
 
         private string _currentProcess;
@@ -45,6 +52,9 @@ namespace FocusPad.ViewModels
 
         private ObservableCollection<FocusNote> _currentNotes;
         public ObservableCollection<FocusNote> CurrentNotes { get => _currentNotes; set => this.SetProperty(ref _currentNotes, value); }
+
+        private ICollectionView _currentNotesSorted;
+        public ICollectionView CurrentNotesSorted { get => _currentNotesSorted; set => this.SetProperty(ref _currentNotesSorted, value); }
 
         private Dictionary<string, ObservableCollection<FocusNote>> _notes;
 
@@ -105,6 +115,23 @@ namespace FocusPad.ViewModels
             }
 
             CurrentNotes = _notes[CurrentProcess];
+            CurrentNotesSorted = CollectionViewSource.GetDefaultView(CurrentNotes);
+            CurrentNotesSorted.Filter = (obj) =>
+            {
+                var note = obj as FocusNote;
+
+                // Search text has no input, return all elements.
+                if(note == null || string.IsNullOrEmpty(SearchText))
+                {
+                    return true;
+                }
+
+                var searchLow = SearchText.ToLower();
+                var nTitleLow = note.Title.ToLower();
+                var nContentLow = note.Content.ToLower();
+
+                return nTitleLow.Contains(searchLow) || nContentLow.Contains(searchLow);
+            };
         }
 
         private void AddItem()
