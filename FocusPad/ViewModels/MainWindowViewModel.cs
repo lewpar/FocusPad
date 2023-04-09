@@ -34,6 +34,13 @@ namespace FocusPad.ViewModels
             } 
         }
 
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set => SetProperty(ref _searchText, value);
+        }
+
         private string _currentProcess;
 
         private ObservableCollection<FocusNote> _testNotes;

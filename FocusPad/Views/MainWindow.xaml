@@ -58,7 +58,7 @@
 
                     <Grid Grid.Column="0">
                         <TextBox x:Name="FocusSearchTextBox" Style="{StaticResource StyleFocusTextBox}" Grid.Column="0"
-                             VerticalContentAlignment="Center"/>
+                             VerticalContentAlignment="Center" Text="{Binding SearchText, Mode=TwoWay}"/>
                         <TextBlock Text="Search / Create" IsHitTestVisible="False" VerticalAlignment="Center" Margin="10 0 0 0" Foreground="LightGray">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
