@@ -6,7 +6,6 @@ using FocusPad.Utils;
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -43,8 +42,8 @@ namespace FocusPad.ViewModels
 
         private string _currentProcess;
 
-        private ObservableCollection<FocusNote> _testNotes;
-        public ObservableCollection<FocusNote> TestNotes { get => _testNotes; set => this.SetProperty(ref _testNotes, value); }
+        private ObservableCollection<FocusNote> _currentNotes;
+        public ObservableCollection<FocusNote> CurrentNotes { get => _currentNotes; set => this.SetProperty(ref _currentNotes, value); }
 
         private Dictionary<string, ObservableCollection<FocusNote>> _notes;
 
@@ -59,7 +58,8 @@ namespace FocusPad.ViewModels
 
             _notes = new Dictionary<string, ObservableCollection<FocusNote>>()
             {
-                { "Notepad", new ObservableCollection<FocusNote>() 
+                { 
+                    "Notepad", new ObservableCollection<FocusNote>() 
                     { 
                         new FocusNote() { Title = "Title", Content = "Test Content" }, 
                         new FocusNote() { Title = "Title", Content = "Test Content" },
@@ -97,12 +97,13 @@ namespace FocusPad.ViewModels
         {
             _currentProcess = ProcessPInvoke.GetForegroundProcessName();
 
+            // Create new note-list if not exist for current process.
             if(!_notes.ContainsKey(_currentProcess))
             {
                 _notes.Add(_currentProcess, new ObservableCollection<FocusNote>());
             }
 
-            TestNotes = _notes[_currentProcess];
+            CurrentNotes = _notes[_currentProcess];
         }
 
         private void AddItem()
@@ -118,17 +119,16 @@ namespace FocusPad.ViewModels
                 Content = SearchText
             };
 
-            _notes[_currentProcess].Add(note);
+            CurrentNotes.Add(note);
 
             SearchText = string.Empty;
         }
 
         private void DeleteItem(FocusNote note)
         {
-            if(TestNotes.Contains(note))
+            if(CurrentNotes.Contains(note))
             {
-                TestNotes.Remove(note);
-                _notes[_currentProcess].Remove(note);
+                CurrentNotes.Remove(note);
             }
         }
     }
